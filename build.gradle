@@ -8,11 +8,12 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:2.10.1")
-    testImplementation(platform("org.junit:junit-bom:5.10.2"))
+    implementation("com.google.code.gson:gson:2.11.0")
+    testImplementation(platform("org.junit:junit-bom:5.13.4"))
     testImplementation("org.junit.jupiter:junit-jupiter")
-    testImplementation("com.approvaltests:approvaltests:22.3.3")
-    testImplementation("org.mockito:mockito-core:5.10.0")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    testImplementation("com.approvaltests:approvaltests:24.2.0")
+    testImplementation("org.mockito:mockito-core:5.12.0")
 }
 
 group = 'com.guitarshack'
@@ -25,6 +26,7 @@ application {
 
 test {
     useJUnitPlatform()
+    failOnNoDiscoveredTests = false
     testLogging {
         events "passed", "skipped", "failed"
     }
